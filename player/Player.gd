@@ -4,7 +4,7 @@ extends Node2D
 @export_subgroup("Vertical")
 @export var riseSpeed : float = 300;
 @export var fallSpeedVertical : float = 150;
-@export var fallSpeedVerticalFallOff = 20;
+@export var fallSpeedVerticalFallOff = 18;
 @export var fallSpeedVerticalFallOffRate : float = 0.025;
 @export var fallSpeedVerticalIncrement : float = 20;
 @export var crashVerticalSpeed : float = 200;
@@ -12,14 +12,13 @@ extends Node2D
 @export_subgroup("Horizontal")
 @export var fallSpeedHorizontal : float = 10;
 @export var fallSpeedHorizontalFallOff = 10;
-@export var fallSpeedHorizontalIncrementRate : float = 40;
+@export var fallSpeedHorizontalIncrementRate : float = 20;
 @export var fallSpeedHorizontalFallOffRate : float = 0.025;
 @export var crashHorizontalSpeed : float = 10;
 
 @export_subgroup("Sequence Ticks")
 @export var numberOfDiveTicks = 10;
-@export var numberOfCurveTicks = 10;
-@export var numberOfFlatTicks = 21;
+@export var minimumNumberOfCurveTicks = 5;
 @export var allowedTooSlowTicks = 25;
 @export_subgroup("Too Slow")
 @export var tooSlowRate : float = 0.025;
@@ -75,20 +74,11 @@ func _process(delta):
 		if(timeFalling > (numberOfVerticalFallOffOccurences + 1) * fallSpeedVerticalFallOffRate):
 			numberOfVerticalFallOffOccurences += 1;
 			
-			#same curve every time
-			# if(numberOfVerticalFallOffOccurences <= numberOfDiveTicks):
-			# 	currentVerticalFallSpeed = currentVerticalFallSpeed + fallSpeedVerticalIncrement;
-			# elif(numberOfVerticalFallOffOccurences <= numberOfDiveTicks + numberOfCurveTicks):
-			# 	currentVerticalFallSpeed = currentVerticalFallSpeed - fallSpeedVerticalFallOff;
-			# else:
-			# 	currentVerticalFallSpeed = currentVerticalFallSpeed - fallSpeedVerticalFallOff;
-
-			#curve triggered by player
 			if(!shouldLevelOut):
 				currentVerticalFallSpeed = currentVerticalFallSpeed + fallSpeedVerticalIncrement
 			elif(shouldLevelOut):
 				numberOfPostLevelOutVerticalTicks += 1;
-				if(numberOfPostLevelOutVerticalTicks <= verticalTicksBeforeLevelOut + (numberOfCurveTicks * .5)):
+				if(numberOfPostLevelOutVerticalTicks <= verticalTicksBeforeLevelOut + minimumNumberOfCurveTicks):
 					currentVerticalFallSpeed = currentVerticalFallSpeed - fallSpeedVerticalFallOff;
 				else:
 					currentVerticalFallSpeed = currentVerticalFallSpeed - fallSpeedVerticalFallOff;
@@ -99,16 +89,9 @@ func _process(delta):
 		if(timeFalling > (numberOfHorizontalFallOffOccurences + 1) * fallSpeedHorizontalFallOffRate):
 			numberOfHorizontalFallOffOccurences += 1;
 			
-			#same curve every time
-			# if(numberOfVerticalFallOffOccurences <= numberOfDiveTicks + numberOfCurveTicks):
-			# 	currentHorizontalFallSpeed = currentHorizontalFallSpeed + fallSpeedHorizontalIncrementRate;
-			# else:
-			# 	currentHorizontalFallSpeed = currentHorizontalFallSpeed - fallSpeedHorizontalFallOff;
-
-			#curve triggered by player
 			if(shouldLevelOut):
-				if(numberOfPostLevelOutVerticalTicks <= verticalTicksBeforeLevelOut + (numberOfCurveTicks * .5)):
-					currentHorizontalFallSpeed = currentHorizontalFallSpeed + (fallSpeedHorizontalIncrementRate * .5);
+				if(numberOfPostLevelOutVerticalTicks <= verticalTicksBeforeLevelOut + minimumNumberOfCurveTicks):
+					currentHorizontalFallSpeed = currentHorizontalFallSpeed + fallSpeedHorizontalIncrementRate;
 				else:
 					currentHorizontalFallSpeed = currentHorizontalFallSpeed - fallSpeedHorizontalFallOff;
 

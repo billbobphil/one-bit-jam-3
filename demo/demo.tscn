@@ -7,4 +7,3 @@
 [node name="Player" parent="." instance=ExtResource("1_cude8")]
 position = Vector2(106, 315)
 fallSpeedHorizontalFallOff = 5
-numberOfFlatTicks = 30
