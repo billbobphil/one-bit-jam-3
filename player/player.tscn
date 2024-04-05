@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://qd3wuwsi0dt4"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_q4ui6"]
+[ext_resource type="Texture2D" uid="uid://culfccb7bqw0f" path="res://temp/32x32-cube.png" id="2_r2ibt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4dgd"]
+size = Vector2(32, 32)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_q4ui6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r2ibt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_o4dgd")
