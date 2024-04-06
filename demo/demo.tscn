@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvm7reniegp2a"]
+[gd_scene load_steps=3 format=3 uid="uid://cvm7reniegp2a"]
 
 [ext_resource type="PackedScene" uid="uid://qd3wuwsi0dt4" path="res://player/player.tscn" id="1_cude8"]
+[ext_resource type="PackedScene" uid="uid://6y8jacdto4jo" path="res://gate/gate.tscn" id="2_h5rbi"]
 
 [node name="Demo" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cude8")]
 position = Vector2(106, 315)
 fallSpeedHorizontalFallOff = 5
+
+[node name="Gates" type="Node2D" parent="."]
+
+[node name="Gate" parent="Gates" instance=ExtResource("2_h5rbi")]
+position = Vector2(426, 315)
+distanceApart = 100
+
+[node name="Gate2" parent="Gates" instance=ExtResource("2_h5rbi")]
+position = Vector2(1577, 320)
+distanceApart = 100

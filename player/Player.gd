@@ -54,11 +54,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
+	#order of operations here is critically important!
+
 	if(wentToSlow):
-		print('too slow')
 		position += Vector2(crashHorizontalSpeed, crashVerticalSpeed) * delta;
 	elif(shouldFall):
-		print('falling');
 		if(!shouldLevelOut && Input.is_action_just_pressed("toggle")):
 			print('trigger level out');
 			shouldLevelOut = true;
@@ -107,7 +107,6 @@ func _process(delta):
 		position += Vector2(currentHorizontalFallSpeed, currentVerticalFallSpeed) * delta;
 
 	if(isRising):
-		print('rising');
 		position += Vector2(0, -riseSpeed) * delta;
 
 	if(isRising && Input.is_action_just_pressed("toggle")):
@@ -121,7 +120,6 @@ func _process(delta):
 		
 	if(canRise && !isRising && Input.is_action_just_pressed("toggle")):
 		print('trigger rising')
-		# position += Vector2(0, -riseSpeed) * delta;
 		isRising = true;
 		hasLeftGround = true;
 		shouldFall = false;

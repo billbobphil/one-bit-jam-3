@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qd3wuwsi0dt4"]
+[gd_scene load_steps=6 format=3 uid="uid://qd3wuwsi0dt4"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_q4ui6"]
 [ext_resource type="Texture2D" uid="uid://culfccb7bqw0f" path="res://temp/32x32-cube.png" id="2_r2ibt"]
+[ext_resource type="Texture2D" uid="uid://bxbqf4i3furge" path="res://icon.svg" id="3_1x87b"]
+[ext_resource type="Script" path="res://player/Arrow.gd" id="4_hcw0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4dgd"]
 size = Vector2(32, 32)
@@ -16,3 +18,14 @@ texture = ExtResource("2_r2ibt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_o4dgd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(428, 124)
+
+[node name="Arrow" type="Sprite2D" parent="." node_paths=PackedStringArray("objectToOrbit")]
+position = Vector2(53, -1.90735e-06)
+scale = Vector2(0.248047, 0.248047)
+texture = ExtResource("3_1x87b")
+script = ExtResource("4_hcw0k")
+objectToOrbit = NodePath("..")
+orbitDistance = 100
