@@ -20,7 +20,8 @@ texture = ExtResource("2_r2ibt")
 shape = SubResource("RectangleShape2D_o4dgd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(428, 124)
+position = Vector2(605, 203)
+zoom = Vector2(0.5, 0.5)
 
 [node name="Arrow" type="Sprite2D" parent="." node_paths=PackedStringArray("objectToOrbit")]
 position = Vector2(53, -1.90735e-06)

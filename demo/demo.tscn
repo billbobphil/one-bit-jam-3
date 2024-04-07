@@ -1,20 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvm7reniegp2a"]
+[gd_scene load_steps=4 format=3 uid="uid://cvm7reniegp2a"]
 
 [ext_resource type="PackedScene" uid="uid://qd3wuwsi0dt4" path="res://player/player.tscn" id="1_cude8"]
-[ext_resource type="PackedScene" uid="uid://6y8jacdto4jo" path="res://gate/gate.tscn" id="2_h5rbi"]
+[ext_resource type="Script" path="res://demo/Demo.gd" id="1_llvjn"]
+[ext_resource type="PackedScene" uid="uid://dj74jpcjpnfpx" path="res://gateSpawner/gateSpawner.tscn" id="3_kwek7"]
 
 [node name="Demo" type="Node2D"]
+script = ExtResource("1_llvjn")
 
 [node name="Player" parent="." instance=ExtResource("1_cude8")]
-position = Vector2(106, 315)
 fallSpeedHorizontalFallOff = 5
 
-[node name="Gates" type="Node2D" parent="."]
+[node name="GateSpawner" parent="." instance=ExtResource("3_kwek7")]
+startingGatesToSpawn = 10
 
-[node name="Gate" parent="Gates" instance=ExtResource("2_h5rbi")]
-position = Vector2(426, 315)
-distanceApart = 100
+[connection signal="passed_through_gate" from="Player/Arrow" to="GateSpawner" method="receiveSignalToSpawnGate"]
 
-[node name="Gate2" parent="Gates" instance=ExtResource("2_h5rbi")]
-position = Vector2(1577, 320)
-distanceApart = 100
+[editable path="Player"]

@@ -60,7 +60,7 @@ func _process(delta):
 		position += Vector2(crashHorizontalSpeed, crashVerticalSpeed) * delta;
 	elif(shouldFall):
 		if(!shouldLevelOut && Input.is_action_just_pressed("toggle")):
-			print('trigger level out');
+			# print('trigger level out');
 			shouldLevelOut = true;
 			verticalTicksBeforeLevelOut = numberOfVerticalFallOffOccurences;
 
@@ -110,7 +110,7 @@ func _process(delta):
 		position += Vector2(0, -riseSpeed) * delta;
 
 	if(isRising && Input.is_action_just_pressed("toggle")):
-		print('trigger falling')
+		# print('trigger falling')
 		canRise = false;
 		isRising = false;
 		shouldFall = true;
@@ -119,7 +119,7 @@ func _process(delta):
 		sprite.modulate = isFallingColor;
 		
 	if(canRise && !isRising && Input.is_action_just_pressed("toggle")):
-		print('trigger rising')
+		# print('trigger rising')
 		isRising = true;
 		hasLeftGround = true;
 		shouldFall = false;

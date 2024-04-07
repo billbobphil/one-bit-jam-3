@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj74jpcjpnfpx"]
+
+[ext_resource type="Script" path="res://gateSpawner/GateSpawner.gd" id="1_y85ry"]
+[ext_resource type="PackedScene" uid="uid://6y8jacdto4jo" path="res://gate/gate.tscn" id="2_iff30"]
+
+[node name="GateSpawner" type="Node2D"]
+script = ExtResource("1_y85ry")
+distanceBetweenGates = 800
+minimumDistanceBetweenGates = 500
+maximumDistanceBetweenGates = 1000
+minimumHalfOpeningGap = 40
+maximumHalfOpeningGap = 250
+maximumVerticalDifferenceBetweenGates = 600
+gateScene = ExtResource("2_iff30")

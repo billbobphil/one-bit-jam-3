@@ -11,14 +11,14 @@ script = ExtResource("1_nr4qj")
 
 [node name="TopGate" type="Sprite2D" parent="."]
 modulate = Color(0, 0.286275, 0.776471, 1)
-position = Vector2(0, -271)
-scale = Vector2(1, 16.9063)
+position = Vector2(0, -3156.25)
+scale = Vector2(1, 197.234)
 texture = ExtResource("1_fc4jt")
 
 [node name="BottomGate" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0.0156863, 1)
-position = Vector2(0, 270.5)
-scale = Vector2(1, 16.9063)
+position = Vector2(3, 6252)
+scale = Vector2(0.8125, 390.75)
 texture = ExtResource("1_fc4jt")
 
 [node name="GateCenter" type="Node2D" parent="."]

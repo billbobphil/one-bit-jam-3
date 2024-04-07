@@ -3,6 +3,9 @@ extends Sprite2D
 @export var objectToOrbit : Node2D;
 @export var orbitDistance = 10;
 var nearestGate = null;
+var lastGate = null;
+
+signal passed_through_gate
 
 func _ready():
 	pass # Replace with function body.
@@ -39,6 +42,10 @@ func _process(_delta):
 		# look_at(nearestGate.get_node("GateCenter").global_position);
 		pointAtTarget(nearestGate.get_node("GateCenter").global_position, objectToOrbit.global_position);
 		self_modulate.a = 1;
+
+		if(nearestGate != lastGate):
+			lastGate = nearestGate;
+			passed_through_gate.emit();
 	else:
 		self_modulate.a = 0;
 
