@@ -11,6 +11,7 @@ extends Node2D
 @export var gateScene : PackedScene;
 var gateToSpawn : int = 1;
 var lastGateSpawned;
+var gatesCrossed = 0;
 
 func _ready():
 	for i in range(startingGatesToSpawn):
@@ -41,3 +42,5 @@ func spawnGate():
 func receiveSignalToSpawnGate():
 	print('spawning gate');
 	spawnGate();
+	gatesCrossed += 1;
+	print('gates crossed: ' + str(gatesCrossed));
