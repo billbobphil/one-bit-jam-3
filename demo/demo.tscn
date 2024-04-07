@@ -13,6 +13,7 @@ fallSpeedHorizontalFallOff = 5
 [node name="GateSpawner" parent="." instance=ExtResource("3_kwek7")]
 startingGatesToSpawn = 10
 
+[connection signal="passed_through_gate" from="Player/Arrow" to="Player/Hud" method="_on_passed_through_gate"]
 [connection signal="passed_through_gate" from="Player/Arrow" to="GateSpawner" method="receiveSignalToSpawnGate"]
 
 [editable path="Player"]

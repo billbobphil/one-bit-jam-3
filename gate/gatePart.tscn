@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmxpw5l7yxn5r"]
+
+[ext_resource type="Texture2D" uid="uid://culfccb7bqw0f" path="res://temp/32x32-cube.png" id="1_7slax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s6hf"]
+size = Vector2(32, 9598)
+
+[node name="GatePart" type="Node2D" groups=["gatePart"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4784.5)
+scale = Vector2(1, 300)
+texture = ExtResource("1_7slax")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4787)
+shape = SubResource("RectangleShape2D_3s6hf")

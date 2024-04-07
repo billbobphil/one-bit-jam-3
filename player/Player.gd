@@ -7,7 +7,7 @@ extends Node2D
 
 @export_category("Curve Speeds")
 @export_subgroup("Vertical")
-@export var riseSpeed : float = 300;
+@export var riseSpeed : float = 400;
 @export var fallSpeedVertical : float = 150;
 @export var fallSpeedVerticalFallOff = 18;
 @export var fallSpeedVerticalFallOffRate : float = 0.025;
@@ -134,4 +134,10 @@ func _process(delta):
 		verticalTicksBeforeLevelOut = 0;
 
 	
+
+
+
+func _on_area_2d_area_entered(area:Area2D):
+	if(area.get_parent().is_in_group("gatePart")):
+		get_tree().reload_current_scene();
 

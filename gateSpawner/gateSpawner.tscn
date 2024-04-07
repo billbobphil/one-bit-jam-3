@@ -6,9 +6,9 @@
 [node name="GateSpawner" type="Node2D"]
 script = ExtResource("1_y85ry")
 distanceBetweenGates = 800
-minimumDistanceBetweenGates = 500
-maximumDistanceBetweenGates = 1000
-minimumHalfOpeningGap = 40
-maximumHalfOpeningGap = 250
+minimumDistanceBetweenGates = 650
+maximumDistanceBetweenGates = 1100
+minimumHalfOpeningGap = 100
+maximumHalfOpeningGap = 300
 maximumVerticalDifferenceBetweenGates = 600
 gateScene = ExtResource("2_iff30")
